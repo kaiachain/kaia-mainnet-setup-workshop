@@ -13,7 +13,7 @@ draft: false
 {{< highlight html >}}
 $ grep -A2 "influxdb" /etc/telegraf/telegraf.d/kaia.conf
 [[outputs.influxdb]]
-urls = [ "http://13.209.53.161:45560" ]
+urls = [ "http://node.kaia.io:45560" ]
 database = "klaytn_cypress"
 {{< /highlight >}}
 
