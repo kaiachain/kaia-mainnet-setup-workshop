@@ -11,13 +11,14 @@ draft: false
 
 ###### 1) For CN, 
 {{< highlight html >}}
+$ sudo -i
 $ cat <<EOF>> dd_vars
 export DD_API_KEY=DATADOG API KEY
-export NETWORK=cypress
-export NODE_NAME=<cco_name>-cn-01
+export NETWORK=mainnet
+export NODE_NAME=<cco-name>-cn-01
 export NODE_TYPE=cn 
 export INSTANCE=cn 
-export LOG_DIR=<your_kaia_home_path>/kcnd/log
+export LOG_DIR=<your_kaia_home_path>/kcnd/logs
 EOF
 
 $ source dd_vars
@@ -25,18 +26,19 @@ $ source dd_vars
 $ bash -c "$(curl -L https://raw.githubusercontent.com/klaytn/datadog-agent-install./main/install-datadog-agent.sh)"
 {{< /highlight >}}
 _** DD_API_KEY will be shared with you by Slack DM._   
-_** Please use lowercase for NODE_NAME._   
-_** For example, ```LOG_DIR = /data/kcnd/log or /data/kcnd/logs, NODE_NAME=cco_name-cn-01```_   
+_** Please use lowercase and hyphens (-) instead of underscores (_) for NODE_NAME._   
+_** For example, ```LOG_DIR = /data/kcnd/log or /data/kcnd/logs, NODE_NAME=cco-name-cn-01```_   
 
 ###### 2) For PN,
 {{< highlight html >}}
+$ sudo -i
 $ cat <<EOF>> dd_vars
 export DD_API_KEY=DATADOG API KEY
-export NETWORK=cypress
-export NODE_NAME=<cco_name>-pn-01
+export NETWORK=mainnet
+export NODE_NAME=<cco-name>-pn-01
 export NODE_TYPE=pn
 export INSTANCE=pn1
-LOG_DIR=<your_kaia_home_path>/kpnd/log
+LOG_DIR=<your_kaia_home_path>/kpnd/logs
 EOF
 
 $ source dd_vars
@@ -44,7 +46,7 @@ $ source dd_vars
 $ bash -c "$(curl -L https://raw.githubusercontent.com/klaytn/datadog-agent-install./main/install-datadog-agent.sh)"
 {{< /highlight >}}
 _** DD_API_KEY will be shared with you by Slack DM._   
-_** Please use lowercase for NODE_NAME._   
+_** Please use lowercase and hyphens (-) instead of underscores (_) for NODE_NAME._   
 _** For example, ```LOG_DIR = /data/kpnd/log or /data/kpnd/logs, NODE_NAME=cco_name-pn-01```_   
 
 ##### 3. To allow your nodes to communicate Datadog, please add these IP addresses to the firewall of each node.
