@@ -23,7 +23,7 @@ EOF
 
 $ source dd_vars
 
-$ bash -c "$(curl -L https://raw.githubusercontent.com/klaytn/datadog-agent-install./main/install-datadog-agent.sh)"
+$ bash -c "$(curl -L https://raw.githubusercontent.com/kaiachain/datadog-agent-install./main/install-datadog-agent.sh)"
 {{< /highlight >}}
 _** DD_API_KEY will be shared with you by Slack DM._   
 _** Please use lowercase and hyphens (-) instead of underscores (_) for NODE_NAME._   
@@ -43,7 +43,7 @@ EOF
 
 $ source dd_vars
 
-$ bash -c "$(curl -L https://raw.githubusercontent.com/klaytn/datadog-agent-install./main/install-datadog-agent.sh)"
+$ bash -c "$(curl -L https://raw.githubusercontent.com/kaiachain/datadog-agent-install./main/install-datadog-agent.sh)"
 {{< /highlight >}}
 _** DD_API_KEY will be shared with you by Slack DM._   
 _** Please use lowercase and hyphens (-) instead of underscores (_) for NODE_NAME._   
