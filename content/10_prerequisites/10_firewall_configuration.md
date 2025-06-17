@@ -10,10 +10,12 @@ draft: false
 ##### 1. *(Only for CN)* Firewall configuration
 
 ###### 1) If Kairos validation is completed, remove below Kaia CN's IP addresses of Kairos from your firewall configuration.
-```54.180.180.202```   
-```54.180.18.176```   
-```52.79.134.72```   
-```52.78.232.39```
+```34.64.63.34```   
+```34.64.209.150```   
+```34.64.229.190```   
+```34.64.63.183```   
+```147.92.173.41```
+```34.64.155.25```   
 {{< line_break >}}
 {{< line_break >}}
 
