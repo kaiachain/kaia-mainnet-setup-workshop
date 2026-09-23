@@ -11,7 +11,7 @@ draft: false
 
 ###### 1) For both CN and PN,
 {{< highlight html >}}
-$ rm kaia-mainnet-pruning-chaindata-20241109011112.tar.gz
+$ rm kaia-mainnet-pruning-chaindata-20260918010012.tar.zst
 {{< /highlight >}}
 
 {{< line_break >}}
