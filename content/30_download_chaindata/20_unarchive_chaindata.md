@@ -11,12 +11,20 @@ draft: false
 
 ###### 1) For CN,
 {{< highlight html >}}
-$ tar -C <your_kaia_home_path>/kcnd/data -xvf kaia-mainnet-pruning-chaindata-20241109011112.tar.gz --exclude klay/chaindata/receipts
+$ tar --zstd -C <your_kaia_home_path>/kcnd/data -xvf kaia-mainnet-pruning-chaindata-20260918010012.tar.zst --exclude klay/chaindata/receipts
 {{< /highlight >}}
 
 ###### 2) For PN,
 {{< highlight html >}}
-$ tar -C <your_kaia_home_path>/kpnd/data -xvf kaia-mainnet-pruning-chaindata-20241109011112.tar.gz --exclude klay/chaindata/receipts
+$ tar --zstd -C <your_kaia_home_path>/kpnd/data -xvf kaia-mainnet-pruning-chaindata-20260918010012.tar.zst --exclude klay/chaindata/receipts
+{{< /highlight >}}
+
+_** Snapshots are compressed with [zstd](https://github.com/facebook/zstd), so `tar` needs `--zstd`. If your `tar` was built without it, run `sudo yum install zstd` and extract in two steps: `zstd -d <file>.tar.zst -o out.tar && tar -C <your_kaia_home_path>/k*nd/data -xf out.tar --exclude klay/chaindata/receipts`._
+
+_** If the disk has no room for both the archive and the directory it expands into, download and extract in one pass instead of doing step A first._
+{{< highlight html >}}
+$ URL=`curl -s https://snapshots.node.kaia.io/mainnet/pruning-chaindata/latest.txt`
+$ curl -s $URL | tar --zstd -C <your_kaia_home_path>/k*nd/data -xf - --exclude klay/chaindata/receipts
 {{< /highlight >}}
 
 {{< line_break >}}
