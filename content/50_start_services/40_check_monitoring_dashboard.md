@@ -17,7 +17,7 @@ _https://docs.kaia.io/nodes/core-cell/install/install-consensus-nodes/#kcn-conso
 {{< line_break >}}
 
 1. If your CN is shown and blockNumber increases correctly in this dashboard, everything is configured normally.  
-2. If you complete all the previous steps, please send a message to Kaia DevOps by Slack.
+2. If you complete all the previous steps, please send a message to Kaia DevOps by Discord.
 {{< line_break >}}
 
 
