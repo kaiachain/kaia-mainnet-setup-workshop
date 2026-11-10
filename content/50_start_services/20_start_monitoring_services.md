@@ -8,22 +8,22 @@ draft: false
 
 {{< line_break >}}
 ##### 2. Start monitoring services.
-###### 1) For both CN and PN, start the Telegraf service.
-{{< highlight html >}}
+###### 1) Start the Telegraf service.
+{{< highlight bash >}}
 $ sudo systemctl status telegraf
-$ sudo systemctl start telegraf
+$ sudo systemctl enable --now telegraf
 $ sudo systemctl status telegraf
 {{< /highlight >}}
 
-###### 2) For both CN and PN, start the Datadog service if it is stopped.
-{{< highlight html >}}
-$ sudo systemctl status datadog-agent
-$ sudo systemctl start datadog-agent
-$ sudo systemctl status datadog-agent
+###### 2) Start the log shipper service.
+_** Check that kcnd has created the log file first._
+{{< highlight bash >}}
+$ ls -l /kaia/kcnd/logs/kcnd.out
+$ sudo systemctl enable --now kaia-log-shipper
+$ sudo systemctl status kaia-log-shipper
 {{< /highlight >}}
+
+_** If the service fails to start, check the preflight message with ```sudo journalctl -u kaia-log-shipper -n 50```. A ```preflight: ok``` line means the log file and the buffer directory are ready._
 
 {{< line_break >}}
 If you finish this step, please click the next button ```>``` on the right side of this page.
-
-
-

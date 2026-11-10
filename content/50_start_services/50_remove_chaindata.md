@@ -9,8 +9,7 @@ draft: false
 {{< line_break >}}
 ##### 5. Now, the donwloaded chaindata for Mainnet can be removed, if you can confirm everything is done without any problem.
 
-###### 1) For both CN and PN,
-{{< highlight html >}}
+{{< highlight bash >}}
 $ rm kaia-mainnet-pruning-chaindata-20260918010012.tar.zst
 {{< /highlight >}}
 

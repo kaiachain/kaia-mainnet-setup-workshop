@@ -11,4 +11,4 @@ draft = false
 ![Kaia Logo](/images/Logo-1.png)
    
 This online instruction let you join Kaia Mainnet network.    
-If Consensus/Proxy node setup is already completed, you can start with chapter 2.   
+This workshop covers a fresh Consensus Node (CN) installation, from the prerequisites to the monitoring setup.   

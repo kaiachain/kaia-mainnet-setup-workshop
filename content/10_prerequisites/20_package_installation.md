@@ -8,27 +8,58 @@ draft: false
 
 {{< line_break >}}
 
-##### 2. Installation of Kaia packages for CN and PN
-_** We've already installed packages during the Private Network stage. If you need to install newly, please refer these documents._
-###### 1) Document pages
-1. CN - <https://docs.kaia.io/nodes/core-cell/install/install-consensus-nodes/>
-2. PN - <https://docs.kaia.io/nodes/core-cell/install/install-proxy-nodes/>
-###### 2) Reinstall k*nd caused by version conflict
-{{< highlight html >}}
-$ sudo su
-$ cd /tmp
-$ cp /etc/k*nd/conf/k*nd.conf /tmp
-$ systemctl stop k*nd
-$ sudo rm -rf /var/cache/yum
-$ sudo rm /etc/yum.repos.d/klaytn.repo
-$ sudo curl -o /etc/yum.repos.d/kaia.repo https://packages.kaia.io/config/rhel/7/kaia.repo
-$ sudo yum list k*nd
-$ yum remove k*nd -y
-$ sudo yum install k*nd-v1.0.2-0.el7
-$ cp k*nd.conf /etc/k*nd/conf/
-$ systemctl start k*nd
-$ k*n version
+##### 2. Installation of Kaia package for CN
+_** Please refer to the document page for more details: <https://docs.kaia.io/nodes/core-cell/install/install-consensus-nodes/>_
+
+{{< line_break >}}
+
+###### Option 1) Install from Kaia Yum Repo (RHEL recommended)
+{{< highlight bash >}}
+$ sudo curl -o /etc/yum.repos.d/kaia.repo https://packages.kaia.io/config/rhel/9-stream/kaia.repo
+$ sudo yum install kcnd -y
+$ kcn version
 {{< /highlight >}}
+
+The installed files are located as follows.
+
+| File Name | Location |
+|---|---|
+| kcn | ```/usr/bin/kcn``` |
+| kcnd.conf | ```/etc/kcnd/conf/kcnd.conf``` |
+
+{{< line_break >}}
+
+###### Option 2) Linux Archive Distribution
+The archive file consists of the executable binary and the configuration file structured as follows.
+
+```vim
+kcn-linux-amd64
+├── bin
+│   ├── kcn      # CN executable file
+│   └── kcnd     # CN start/termination script file
+└── conf
+    └── kcnd.conf  # CN configuration file
+```
+
+{{% notice warning %}}
+Do NOT alter the file structure or file name. If you change it, the node may not function correctly.
+{{% /notice %}}
+
+Download the latest version of kcn from the **[Download page](https://docs.kaia.io/nodes/downloads/)**, and uncompress it where you want to install the package. The example below installs ```v2.2.2``` under ```/opt```.
+{{< highlight bash >}}
+$ VERSION=v2.2.2
+$ curl -fLO https://packages.kaia.io/kaia/${VERSION}/kcn-${VERSION}-0-linux-amd64.tar.gz
+$ sudo tar zxf kcn-${VERSION}-0-linux-amd64.tar.gz -C /opt
+$ export PATH=$PATH:/opt/kcn-linux-amd64/bin
+$ kcn version
+{{< /highlight >}}
+
+_** It is recommended to add ```/opt/kcn-linux-amd64/bin``` to the environment variable ```$PATH``` (e.g. in ```~/.bashrc```) to run ```kcn``` and ```kcnd``` globally. The other pages assume that the path is added to the variable._
+
+| File Name | Location |
+|---|---|
+| kcn | ```/opt/kcn-linux-amd64/bin/kcn``` |
+| kcnd.conf | ```/opt/kcn-linux-amd64/conf/kcnd.conf``` |
 
 {{< line_break >}}
 If you finish this step, please click the next button ```>``` on the right side of this page.

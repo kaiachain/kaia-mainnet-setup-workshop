@@ -1,9 +1,9 @@
 +++
 title = "Fast Sync with Mainnet"
 date = 2022-07-11T10:25:05+09:00
-weight = 3
+weight = 2
 type = "chapter"
-pre = "<b>3. </b>"
+pre = "<b>2. </b>"
 +++
 
   
