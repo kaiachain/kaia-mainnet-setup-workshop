@@ -61,5 +61,33 @@ _** It is recommended to add ```/opt/kcn-linux-amd64/bin``` to the environment v
 | kcn | ```/opt/kcn-linux-amd64/bin/kcn``` |
 | kcnd.conf | ```/opt/kcn-linux-amd64/conf/kcnd.conf``` |
 
+###### (Optional) Register kcnd as a systemd service
+With the archive distribution, kcnd is not registered as a service, so it does not start automatically after reboot. If you want to manage kcnd with ```systemctl``` like Option 1, create ```/etc/systemd/system/kcnd.service``` as follows.
+
+```vim
+[Unit]
+Description=kcnd Service
+
+[Service]
+Type=forking
+ExecStart=/opt/kcn-linux-amd64/bin/kcnd start
+ExecStop=/opt/kcn-linux-amd64/bin/kcnd stop
+# kcnd writes the kcn process ID to $DATA_DIR/kcnd.pid
+PIDFile=/kaia/kcnd/data/kcnd.pid
+
+[Install]
+WantedBy=multi-user.target
+```
+
+_** If you installed the archive in another path, replace ```/opt/kcn-linux-amd64``` with your path. ```PIDFile``` must match ```DATA_DIR``` in ```kcnd.conf``` (see [3-A. Node Configuration](/40_configure_network/10_node_configuration/))._
+
+Enable the service.
+{{< highlight bash >}}
+$ sudo systemctl daemon-reload
+$ sudo systemctl enable kcnd.service
+{{< /highlight >}}
+
+_** Do not start kcnd yet. It will be started in [4-A. Start the Kaia service](/50_start_services/10_start_klaytn_service/) after the chaindata and ```kcnd.conf``` are ready._
+
 {{< line_break >}}
 If you finish this step, please click the next button ```>``` on the right side of this page.
