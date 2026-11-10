@@ -9,7 +9,7 @@ draft: false
 {{< line_break >}}
 ##### 4. Take a look at Grafana dashboard to confirm if your node is correctly joined to Mainnet network.
 
-**Link : [Mainnet Grafana](http://node.kaia.io:3000/d/tc1SOM4Zz/dashboardcco?orgId=1&from=now-5m&to=now)**
+**Link : [Mainnet Grafana](https://monitoring.node.kaia.io/)**
 {{< line_break >}}
 
 _** You can refer this document to check your services further._   
