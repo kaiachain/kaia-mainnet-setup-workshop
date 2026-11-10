@@ -7,7 +7,8 @@ draft: false
 ---
 
 {{< line_break >}}
-##### 4. Take a look at Grafana dashboard to confirm if your node is correctly joined to Mainnet network.
+##### 4. Mainnet Grafana dashboard
+Kaia provides a Grafana dashboard where you can view the monitoring data of your CN collected in the previous steps.
 
 **Link : [Mainnet Grafana](https://monitoring.node.kaia.io/)**
 
