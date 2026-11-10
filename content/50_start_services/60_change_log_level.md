@@ -1,12 +1,12 @@
 ---
 title: "Change log level"
 date: 2024-08-13T10:43:05+09:00
-weight: 60
-pre: "<b>F. </b>"
+weight: 50
+pre: "<b>E. </b>"
 draft: false
 ---
 {{< line_break >}}
-##### 6. Change log level
+##### 5. Change log level
 {{< highlight bash >}}
 $ sudo kcn attach --exec 'debug.verbosity(1)' /kaia/kcnd/data/klay.ipc
 $ sudo kcn attach --exec 'debug.vmodule("blockchain=3")' /kaia/kcnd/data/klay.ipc

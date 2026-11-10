@@ -21,5 +21,9 @@ $ URL=`curl -s https://snapshots.node.kaia.io/mainnet/pruning-chaindata/latest.t
 $ curl -s $URL | sudo tar --zstd -C /kaia/kcnd/data -xf - --exclude klay/chaindata/receipts
 {{< /highlight >}}
 
+{{% notice note %}}
+Keep the downloaded archive (```kaia-mainnet-pruning-chaindata-*.tar.zst```) until the node setup is complete. After your CN is running normally at the end of this workshop, remove it to free up the disk space: ```rm kaia-mainnet-pruning-chaindata-20260918010012.tar.zst``` (and ```out.tar``` if you used the two-step extraction).
+{{% /notice %}}
+
 {{< line_break >}}
 If you finish this step, please click the next button ```>``` on the right side of this page.
