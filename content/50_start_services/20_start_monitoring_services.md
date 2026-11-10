@@ -28,7 +28,7 @@ _** If the log path is wrong, Fluent Bit keeps running without any error and shi
 $ sudo journalctl -u fluent-bit -n 50 | grep inotify_fs_add
 ... [input:tail:tail.0] inotify_fs_add(): inode=... watch_fd=1 name=/kaia/kcnd/logs/kcnd.out
 {{< /highlight >}}
-_** If there is no such line, check the ```Path``` in ```/etc/fluent-bit/fluent-bit.conf```._
+_** If there is no such line, check the ```Path``` in ```/etc/fluent-bit/kaia-logs.conf```._
 
 {{< line_break >}}
 If you finish this step, please click the next button ```>``` on the right side of this page.

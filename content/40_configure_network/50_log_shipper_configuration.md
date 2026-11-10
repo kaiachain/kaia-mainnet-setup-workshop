@@ -19,17 +19,15 @@ $ /opt/fluent-bit/bin/fluent-bit --version
 
 {{< line_break >}}
 
-###### 2) Replace ```/etc/fluent-bit/fluent-bit.conf```
-The package's ```fluent-bit.service``` reads ```/etc/fluent-bit/fluent-bit.conf```, which is a demo configuration by default. Back it up and replace the **whole file** with the configuration below.
-Replace ```<hostname>``` with the same value as ```hostname``` in ```/etc/telegraf/telegraf.d/kaia.conf``` (e.g. ```abc-cn```).
+###### 2) Create ```/etc/fluent-bit/kaia-logs.conf```
+This file holds the log shipping configuration. Replace ```<hostname>``` with the same value as ```hostname``` in ```/etc/telegraf/telegraf.d/kaia.conf``` (e.g. ```abc-cn```).
 
 {{< highlight bash >}}
-$ sudo cp /etc/fluent-bit/fluent-bit.conf /etc/fluent-bit/fluent-bit.conf.orig
-$ sudo vi /etc/fluent-bit/fluent-bit.conf
+$ sudo vi /etc/fluent-bit/kaia-logs.conf
 {{< /highlight >}}
 
 ```vim
-# /etc/fluent-bit/fluent-bit.conf
+# /etc/fluent-bit/kaia-logs.conf
 #
 # Ships this node's kcnd log to VictoriaLogs via Fluent Bit rather than
 # telegraf: telegraf's own InfluxDB output would exit entirely if a second,
@@ -102,12 +100,28 @@ $ sudo vi /etc/fluent-bit/fluent-bit.conf
     storage.total_limit_size  1G
 ```
 
-###### 3) Create the buffer directory and check the configuration
+{{< line_break >}}
+
+###### 3) Make ```/etc/fluent-bit/fluent-bit.conf``` include ```kaia-logs.conf```
+The package's ```fluent-bit.service``` always reads ```/etc/fluent-bit/fluent-bit.conf```, which is a demo configuration by default. Back it up and replace the **whole file** with the single ```@INCLUDE``` line below.
+
+{{< highlight bash >}}
+$ sudo cp /etc/fluent-bit/fluent-bit.conf /etc/fluent-bit/fluent-bit.conf.orig
+$ echo "@INCLUDE /etc/fluent-bit/kaia-logs.conf" | sudo tee /etc/fluent-bit/fluent-bit.conf
+{{< /highlight >}}
+
+{{% notice warning %}}
+Do not keep the demo ```[INPUT]``` / ```[OUTPUT]``` sections in ```fluent-bit.conf```. They would run together with ```kaia-logs.conf```.
+{{% /notice %}}
+
+{{< line_break >}}
+
+###### 4) Create the buffer directory and check the configuration
 {{< highlight bash >}}
 $ sudo mkdir -p /var/lib/fluent-bit
 $ sudo /opt/fluent-bit/bin/fluent-bit --dry-run -c /etc/fluent-bit/fluent-bit.conf
 {{< /highlight >}}
-_** ```--dry-run``` only checks the configuration syntax. If there is no error, the configuration is valid._
+_** ```--dry-run``` checks ```fluent-bit.conf``` together with the included ```kaia-logs.conf```. If there is no error, the configuration is valid._
 
 _** Do not start ```fluent-bit``` yet. It tails ```/kaia/kcnd/logs/kcnd.out```, which is created after kcnd starts. It will be started in [5-B. Start the monitoring services](/50_start_services/20_start_monitoring_services/)._
 
