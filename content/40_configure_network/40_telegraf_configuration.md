@@ -1,18 +1,17 @@
 ---
 title: "Telegraf Configuration"
 date: 2022-07-14T16:44:50+09:00
-weight: 50
-pre: "<b>E. </b>"
+weight: 30
+pre: "<b>D. </b>"
 draft: false
 ---
 
 {{< line_break >}}
-##### 1. Enable monitoring in kcnd/kpnd
+##### 4. Configure Telegraf for metrics
 
-###### 1) For both CN and PN,
-Check the if below two options enabled.
+###### 1) Enable metrics in kcnd
+Check if the two options below are enabled in ```kcnd.conf```.
 
->*`/etc/kcnd/conf/kcnd.conf`*
 ```vim
 ...
 METRICS=1
@@ -20,90 +19,64 @@ PROMETHEUS=1
 ...
 ```
 
-If two options enabled, You may check port 61001 is open.
+After kcnd is started, you can check that port 61001 is open.
 
-{{< highlight html >}}
+{{< highlight bash >}}
 $ netstat -ntap | grep 61001
 tcp        0      0 :::61001        :::*       LISTEN      8989/kcn
 {{< /highlight >}}
 
 {{< line_break >}}
-### 2. Configure Telegraf service
-Create new telegraf configuration file as kaia.conf under below path and add the following
-the configuration.
 
->*`/etc/telegraf/telegraf.d/`*
+###### 2) Set the collection intervals in ```/etc/telegraf/telegraf.conf```
+Set the three values below under the ```[agent]``` section. If a line is commented out (```#```), uncomment it.
 
-Edit 'nodetype', 'instance', and 'hostname' appropriately for each node.
+```vim
+[agent]
+  ...
+  interval = "10s"
+  round_interval = true
+  ...
+  flush_interval = "10s"
+  ...
+```
+
+{{< line_break >}}
+
+###### 3) Create ```/etc/telegraf/telegraf.d/kaia.conf```
+Replace ```<hostname>``` with the name of your CN in the ```<org name>-cn``` format (e.g. ```abc-cn```).
+
+{{% notice note %}}
+Use the same ```<hostname>``` value for the ```instance``` of the log shipper in the next step. Otherwise, your node will be split into two identities in the metric and log dashboards.
+{{% /notice %}}
 
 ```vim
 [global_tags]
-# Change "cn" to "pn" for PN installation
 nodetype = "cn"
-# The CN/PN name (e.g. `klaytn-cn`, `klaytn-pn-01`)
-instance = "<hostname>"
-
+network = "mainnet"
 [agent]
-# The CN/PN name (e.g. `klaytn-cn`, `klaytn-pn-01`)
+# The CN name: <org name>-cn (e.g. `abc-cn`)
 hostname = "<hostname>"
 
 [[inputs.procstat]]
-# The process name (e.g. `kcn`, `kpn`)
-  exe = "<k*n>"
+  exe = "kcn"
 
-[[outputs.influxdb]]
-urls = [ "http://node.kaia.io:45560" ]
-database = "klaytn_cypress"
-
-namedrop = ["kaia_log"]
 [inputs.prometheus]
 urls = [ "http://localhost:61001/metrics" ]
-```
-
-###### 2) Only for CN,
-Create new telegraf configuration file as kaia_log.conf under below path and add the following
-the configuration.
-
->*`/etc/telegraf/telegraf.d/`*
-
-```vim   
-[[inputs.tail]]
-  files = ["/var/kcnd/logs/kcnd.out"]
-  from_beginning = false
-  watch_method = "inotify"
-  name_override = "kaia_log"
-  data_format = "value"
-  data_type = "string"
 
 [[outputs.influxdb]]
-  urls = ["http://node.kaia.io:45560"]
-  database = "kaia_logs"
-  namepass = ["kaia_log"]
-  ```
+  urls = ["http://metrics.node.kaia.io:45560"]
+  database = "kaia-network-monitoring"
 
-{{< line_break >}}
-If you finish this step, please click the next button ```>``` on the right side of this page.
+  namedrop = ["kaia_log"]
+  skip_database_creation = true
+```
 
-### 1. Enable monitoring in kcnd/kpnd
-
-
-{{% notice note %}}
-Please find the Private Network Dashboard as below URL. The Credentials will be provided separately.
-{{% /notice %}}
-
-* http://node.kaia.io:3000
-
-{{< line_break >}}
 {{< line_break >}}
 
 ---
-{{< line_break >}}
-
-You can check the more details requirements on the page below.
+You can check more details on the page below.
 * https://docs.kaia.io/nodes/core-cell/monitoring-setup/
 
 {{< line_break >}}
-{{< line_break >}}
-{{< line_break >}}
-
 If you finish this step, please click the next button ```>``` on the right side of this page.

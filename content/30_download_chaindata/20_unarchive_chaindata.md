@@ -7,25 +7,23 @@ draft: false
 ---
 
 {{< line_break >}}
-##### 2. Extract the chaindata downloaded to the DATA_DIR.
+##### 2. Extract the downloaded chaindata to the DATA_DIR (```/kaia/kcnd/data```).
 
-###### 1) For CN,
-{{< highlight html >}}
-$ tar --zstd -C <your_kaia_home_path>/kcnd/data -xvf kaia-mainnet-pruning-chaindata-20260918010012.tar.zst --exclude klay/chaindata/receipts
+{{< highlight bash >}}
+$ sudo tar --zstd -C /kaia/kcnd/data -xvf kaia-mainnet-pruning-chaindata-20260918010012.tar.zst --exclude klay/chaindata/receipts
 {{< /highlight >}}
 
-###### 2) For PN,
-{{< highlight html >}}
-$ tar --zstd -C <your_kaia_home_path>/kpnd/data -xvf kaia-mainnet-pruning-chaindata-20260918010012.tar.zst --exclude klay/chaindata/receipts
-{{< /highlight >}}
-
-_** Snapshots are compressed with [zstd](https://github.com/facebook/zstd), so `tar` needs `--zstd`. If your `tar` was built without it, run `sudo yum install zstd` and extract in two steps: `zstd -d <file>.tar.zst -o out.tar && tar -C <your_kaia_home_path>/k*nd/data -xf out.tar --exclude klay/chaindata/receipts`._
+_** Snapshots are compressed with [zstd](https://github.com/facebook/zstd), so `tar` needs `--zstd`. If your `tar` was built without it, run `sudo yum install zstd` and extract in two steps: `zstd -d <file>.tar.zst -o out.tar && sudo tar -C /kaia/kcnd/data -xf out.tar --exclude klay/chaindata/receipts`._
 
 _** If the disk has no room for both the archive and the directory it expands into, download and extract in one pass instead of doing step A first._
-{{< highlight html >}}
+{{< highlight bash >}}
 $ URL=`curl -s https://snapshots.node.kaia.io/mainnet/pruning-chaindata/latest.txt`
-$ curl -s $URL | tar --zstd -C <your_kaia_home_path>/k*nd/data -xf - --exclude klay/chaindata/receipts
+$ curl -s $URL | sudo tar --zstd -C /kaia/kcnd/data -xf - --exclude klay/chaindata/receipts
 {{< /highlight >}}
+
+{{% notice note %}}
+Keep the downloaded archive (```kaia-mainnet-pruning-chaindata-*.tar.zst```) until the node setup is complete. After your CN is running normally at the end of this workshop, remove it to free up the disk space: ```rm kaia-mainnet-pruning-chaindata-20260918010012.tar.zst``` (and ```out.tar``` if you used the two-step extraction).
+{{% /notice %}}
 
 {{< line_break >}}
 If you finish this step, please click the next button ```>``` on the right side of this page.

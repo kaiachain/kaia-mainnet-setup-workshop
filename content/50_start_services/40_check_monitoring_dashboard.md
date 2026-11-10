@@ -1,5 +1,5 @@
 ---
-title: "Check Monitoring Dashboard"
+title: "Grafana Dashboard"
 date: 2022-07-14T19:11:35+09:00
 weight: 40
 pre: "<b>D. </b>"
@@ -7,17 +7,16 @@ draft: false
 ---
 
 {{< line_break >}}
-##### 4. Take a look at Grafana dashboard to confirm if your nodes are correctly joined to Mainnet network.
+##### 4. Mainnet Grafana dashboard
+Kaia provides a Grafana dashboard where you can view the monitoring data of your CN collected in the previous steps.
 
-**Link : [Mainnet Grafana](http://node.kaia.io:3000/d/tc1SOM4Zz/dashboardcco?orgId=1&from=now-5m&to=now)**
+**Link : [Mainnet Grafana](https://monitoring.node.kaia.io/)**
+
+_** To be invited to Grafana, please send a message to Kaia DevOps on Discord._
 {{< line_break >}}
 
 _** You can refer this document to check your services further._   
-_https://docs.kaia.io/nodes/core-cell/install/install-proxy-nodes/#kpn-console-_
-{{< line_break >}}
-
-1. If your CN/PN Inter Connections looks 2 and blockNumber increases correctly in this dashboard, everything is configured normally.  
-2. If you complete all the previous steps, please send a message to Kaia DevOps by Slack.
+_https://docs.kaia.io/nodes/core-cell/install/install-consensus-nodes/#kcn-console-_
 {{< line_break >}}
 
 

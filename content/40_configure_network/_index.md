@@ -8,7 +8,7 @@ pre = "<b>4. </b>"
 
 
 
-##### Now, we are going to re-configure networks to join Mainnet.
+##### Now, we are going to configure the CN and the monitoring services to join Mainnet.
 ##### 
 
 {{< line_break >}}
