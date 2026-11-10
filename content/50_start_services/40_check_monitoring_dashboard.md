@@ -1,5 +1,5 @@
 ---
-title: "Check Monitoring Dashboard"
+title: "Grafana Dashboard"
 date: 2022-07-14T19:11:35+09:00
 weight: 40
 pre: "<b>D. </b>"
