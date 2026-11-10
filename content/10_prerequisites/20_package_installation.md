@@ -47,21 +47,22 @@ Do NOT alter the file structure or file name. If you change it, the node may not
 
 Download the latest version of kcn from the **[Download page](https://docs.kaia.io/nodes/downloads/)**, and uncompress it where you want to install the package. The example below uses ```v2.2.2```.
 
-_** In this workshop, ```<DOWNLOADED_PATH>``` means the uncompressed ```kcn-linux-amd64``` directory (e.g. ```/home/<user>/kcn-linux-amd64```)._
+_** In this workshop, ```<DOWNLOADED_PATH>``` means the directory where you download and uncompress the archive. The ```kcn-linux-amd64``` directory is created under it._
 {{< highlight bash >}}
+$ cd <DOWNLOADED_PATH>
 $ VERSION=v2.2.2
 $ curl -fLO https://packages.kaia.io/kaia/${VERSION}/kcn-${VERSION}-0-linux-amd64.tar.gz
 $ tar zxf kcn-${VERSION}-0-linux-amd64.tar.gz
-$ export PATH=$PATH:<DOWNLOADED_PATH>/bin
+$ export PATH=$PATH:<DOWNLOADED_PATH>/kcn-linux-amd64/bin
 $ kcn version
 {{< /highlight >}}
 
-_** It is recommended to add ```<DOWNLOADED_PATH>/bin``` to the environment variable ```$PATH``` (e.g. in ```~/.bashrc```) to run ```kcn``` and ```kcnd``` globally. The other pages assume that the path is added to the variable._
+_** It is recommended to add ```<DOWNLOADED_PATH>/kcn-linux-amd64/bin``` to the environment variable ```$PATH``` (e.g. in ```~/.bashrc```) to run ```kcn``` and ```kcnd``` globally. The other pages assume that the path is added to the variable._
 
 | File Name | Location |
 |---|---|
-| kcn | ```<DOWNLOADED_PATH>/bin/kcn``` |
-| kcnd.conf | ```<DOWNLOADED_PATH>/conf/kcnd.conf``` |
+| kcn | ```<DOWNLOADED_PATH>/kcn-linux-amd64/bin/kcn``` |
+| kcnd.conf | ```<DOWNLOADED_PATH>/kcn-linux-amd64/conf/kcnd.conf``` |
 
 ###### (Optional) Register kcnd as a systemd service
 With the archive distribution, kcnd is not registered as a service, so it does not start automatically after reboot. If you want to manage kcnd with ```systemctl``` like Option 1, create ```/etc/systemd/system/kcnd.service``` as follows.
@@ -72,8 +73,8 @@ Description=kcnd Service
 
 [Service]
 Type=forking
-ExecStart=<DOWNLOADED_PATH>/bin/kcnd start
-ExecStop=<DOWNLOADED_PATH>/bin/kcnd stop
+ExecStart=<DOWNLOADED_PATH>/kcn-linux-amd64/bin/kcnd start
+ExecStop=<DOWNLOADED_PATH>/kcn-linux-amd64/bin/kcnd stop
 # kcnd writes the kcn process ID to $DATA_DIR/kcnd.pid
 PIDFile=/kaia/kcnd/data/kcnd.pid
 

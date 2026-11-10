@@ -18,9 +18,9 @@ $ sudo systemctl status kcnd
 ###### 2) Option 2 (Archive) without ```kcnd.service```
 _** If you registered ```kcnd.service```, use 1) instead. Starting with the script directly while the service is enabled makes systemd lose track of the process._
 {{< highlight bash >}}
-$ sudo <DOWNLOADED_PATH>/bin/kcnd status
-$ sudo <DOWNLOADED_PATH>/bin/kcnd start
-$ sudo <DOWNLOADED_PATH>/bin/kcnd status
+$ sudo <DOWNLOADED_PATH>/kcn-linux-amd64/bin/kcnd status
+$ sudo <DOWNLOADED_PATH>/kcn-linux-amd64/bin/kcnd start
+$ sudo <DOWNLOADED_PATH>/kcn-linux-amd64/bin/kcnd status
 {{< /highlight >}}
 
 {{< line_break >}}
