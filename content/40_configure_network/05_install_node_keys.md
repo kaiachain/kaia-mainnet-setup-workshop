@@ -33,12 +33,4 @@ $ sudo ls -l /kaia/kcnd/data/nodekey /kaia/kcnd/data/bls-nodekey
 _** These files are private keys. Keep a backup in a safe place and never share them._
 
 {{< line_break >}}
-
-###### 4) After kcnd is started in [5-A. Start the Kaia service](/50_start_services/10_start_klaytn_service/), check that your keys were used.
-The command below must print nothing. If it prints ```Generated nodekey``` or ```Derived bls-nodekey```, kcn did not find your keys and created new ones: stop kcnd, check the file names and the path above, and start kcnd again.
-{{< highlight bash >}}
-$ grep -E "Generated nodekey|Derived bls-nodekey" /kaia/kcnd/logs/kcnd.out
-{{< /highlight >}}
-
-{{< line_break >}}
 If you finish this step, please click the next button ```>``` on the right side of this page.
