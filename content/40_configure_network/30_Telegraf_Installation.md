@@ -9,29 +9,29 @@ draft: false
 {{< line_break >}}
 
 ##### 2. Telegraf Installation
->Telegraf Installation Guide (Amazon Linux 2 users, see below):
+>Telegraf Installation Guide:
 
-* https://docs.influxdata.com/telegraf/latest/introduction/installation/
+* https://docs.influxdata.com/telegraf/v1/install/
 
 {{< line_break >}}
 
-{{% notice note %}}
-To install Telegraf on Amazon Linux 2, you may use InfluxData's RHEL 7 yum repo as follows:
-{{% /notice %}}
-
-
+###### 1) Add the InfluxData yum repository
 ```vim
-cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
-
-[influxdb]
-name = InfluxDB Repository - RHEL 7
-baseurl = https://repos.influxdata.com/rhel/7/\$basearch/stable
+cat <<EOF | sudo tee /etc/yum.repos.d/influxdata.repo
+[influxdata]
+name = InfluxData Repository - Stable
+baseurl = https://repos.influxdata.com/stable/\$basearch/main
 enabled = 1
 gpgcheck = 1
-gpgkey = https://repos.influxdata.com/influxdata-archive_compat.key
+gpgkey = https://repos.influxdata.com/influxdata-archive.key
 EOF
 ```
 
+{{% notice warning %}}
+Use ```influxdata-archive.key```, not ```influxdata-archive_compat.key```. The ```_compat``` key expired on 2026-01-18 and does not include the subkey (```DA61C26A0585BD3B```) that signs the current Telegraf packages, so ```yum install``` fails with a GPG check error. Do not work around it with ```--nogpgcheck```; fix the ```gpgkey``` instead. If an old ```/etc/yum.repos.d/influxdb.repo``` exists, remove it.
+{{% /notice %}}
+
+###### 2) Install the latest Telegraf
 {{< highlight bash >}}
 $ sudo yum install telegraf -y
 $ telegraf --version

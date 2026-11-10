@@ -45,12 +45,13 @@ kcn-linux-amd64
 Do NOT alter the file structure or file name. If you change it, the node may not function correctly.
 {{% /notice %}}
 
-Download the latest version of kcn from the **[Download page](https://docs.kaia.io/nodes/downloads/)**, and uncompress it where you want to install the package. The example below uses ```v2.2.2```.
+Download the latest version of kcn from the **[Download page](https://docs.kaia.io/nodes/downloads/)**, and uncompress it where you want to install the package. The commands below look up the latest release version from the [Kaia GitHub releases](https://github.com/kaiachain/kaia/releases) and download it.
 
 _** In this workshop, ```<DOWNLOADED_PATH>``` means the directory where you download and uncompress the archive. The ```kcn-linux-amd64``` directory is created under it._
 {{< highlight bash >}}
 $ cd <DOWNLOADED_PATH>
-$ VERSION=v2.2.2
+$ VERSION=$(curl -s https://api.github.com/repos/kaiachain/kaia/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
+$ echo $VERSION
 $ curl -fLO https://packages.kaia.io/kaia/${VERSION}/kcn-${VERSION}-0-linux-amd64.tar.gz
 $ tar zxf kcn-${VERSION}-0-linux-amd64.tar.gz
 $ export PATH=$PATH:<DOWNLOADED_PATH>/kcn-linux-amd64/bin

@@ -26,7 +26,7 @@ IP version    |    Type           |    Protocol    |    Port range    |    Desti
 IPv4          |    All traffic    |    All         |    All           |    0.0.0.0/0
 ```
 
-_** The monitoring endpoints (```metrics.node.kaia.io:45560```, ```logs.node.kaia.io:45560```) only accept traffic from allowlisted IP addresses. Please share the public IP address of your CN with Kaia DevOps by Slack._
+_** The monitoring endpoints (```metrics.node.kaia.io:45560```, ```logs.node.kaia.io:45560```) only accept traffic from allowlisted IP addresses. Please share the public IP address of your CN with Kaia DevOps by Discord._
 
 {{< line_break >}}
 If you finish this step, please click the next button ```>``` on the right side of this page.
