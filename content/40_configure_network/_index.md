@@ -1,9 +1,9 @@
 +++
 title = "Configure Mainnet Network"
 date = 2022-07-11T10:25:55+09:00
-weight = 3
+weight = 4
 type = "chapter"
-pre = "<b>3. </b>"
+pre = "<b>4. </b>"
 +++
 
 

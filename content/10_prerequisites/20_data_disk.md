@@ -1,14 +1,14 @@
 ---
 title: "Data Disk and Directories"
 date: 2026-11-10T10:00:00+09:00
-weight: 30
-pre: "<b>C. </b>"
+weight: 20
+pre: "<b>B. </b>"
 draft: false
 ---
 
 {{< line_break >}}
 
-##### 3. Mount the data disk on ```/kaia``` and create the kcnd directories.
+##### 2. Mount the data disk on ```/kaia``` and create the kcnd directories.
 _** The size of Kaia blockchain data always increases. Please attach a data disk big enough to store the Mainnet chaindata. You can refer to the chaindata size via **[Mainnet snapshot archive](https://snapshots.node.kaia.io/#mainnet-pruning)**._
 
 ###### 1) Find the data disk.

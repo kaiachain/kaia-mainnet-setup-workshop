@@ -1,5 +1,5 @@
 ---
-title: "Package Installation"
+title: "Option 2 - Linux Archive"
 date: 2022-07-11T19:18:57+09:00
 weight: 20
 pre: "<b>B. </b>"
@@ -8,28 +8,10 @@ draft: false
 
 {{< line_break >}}
 
-##### 2. Installation of Kaia package for CN
+##### 2. Linux Archive Distribution
 _** Please refer to the document page for more details: <https://docs.kaia.io/nodes/core-cell/install/install-consensus-nodes/>_
+_** Skip this page if you installed kcnd with [2-A. Option 1 - Kaia Yum Repo](/20_package_installation/10_yum_repo/)._
 
-{{< line_break >}}
-
-###### Option 1) Install from Kaia Yum Repo (RHEL recommended)
-{{< highlight bash >}}
-$ sudo curl -o /etc/yum.repos.d/kaia.repo https://packages.kaia.io/config/rhel/9-stream/kaia.repo
-$ sudo yum install kcnd -y
-$ kcn version
-{{< /highlight >}}
-
-The installed files are located as follows.
-
-| File Name | Location |
-|---|---|
-| kcn | ```/usr/bin/kcn``` |
-| kcnd.conf | ```/etc/kcnd/conf/kcnd.conf``` |
-
-{{< line_break >}}
-
-###### Option 2) Linux Archive Distribution
 The archive file consists of the executable binary and the configuration file structured as follows.
 
 ```vim
@@ -66,7 +48,7 @@ _** It is recommended to add ```<DOWNLOADED_PATH>/kcn-linux-amd64/bin``` to the 
 | kcnd.conf | ```<DOWNLOADED_PATH>/kcn-linux-amd64/conf/kcnd.conf``` |
 
 ###### (Optional) Register kcnd as a systemd service
-With the archive distribution, kcnd is not registered as a service, so it does not start automatically after reboot. If you want to manage kcnd with ```systemctl``` like Option 1, create ```/etc/systemd/system/kcnd.service``` as follows.
+With the archive distribution, kcnd is not registered as a service, so it does not start automatically after reboot. If you want to manage kcnd with ```systemctl``` like [Option 1](/20_package_installation/10_yum_repo/), create ```/etc/systemd/system/kcnd.service``` as follows.
 
 ```vim
 [Unit]
@@ -83,7 +65,7 @@ PIDFile=/kaia/kcnd/data/kcnd.pid
 WantedBy=multi-user.target
 ```
 
-_** Replace ```<DOWNLOADED_PATH>``` with your actual path. ```PIDFile``` must match ```DATA_DIR``` in ```kcnd.conf``` (see [3-A. Node Configuration](/40_configure_network/10_node_configuration/))._
+_** Replace ```<DOWNLOADED_PATH>``` with your actual path. ```PIDFile``` must match ```DATA_DIR``` in ```kcnd.conf``` (see [4-A. Node Configuration](/40_configure_network/10_node_configuration/))._
 
 Enable the service.
 {{< highlight bash >}}
@@ -91,7 +73,7 @@ $ sudo systemctl daemon-reload
 $ sudo systemctl enable kcnd.service
 {{< /highlight >}}
 
-_** Do not start kcnd yet. It will be started in [4-A. Start the Kaia service](/50_start_services/10_start_klaytn_service/) after the chaindata and ```kcnd.conf``` are ready._
+_** Do not start kcnd yet. It will be started in [5-A. Start the Kaia service](/50_start_services/10_start_klaytn_service/) after the chaindata and ```kcnd.conf``` are ready._
 
 {{< line_break >}}
 If you finish this step, please click the next button ```>``` on the right side of this page.

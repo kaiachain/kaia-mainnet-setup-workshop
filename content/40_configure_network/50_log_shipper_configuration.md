@@ -109,7 +109,7 @@ $ sudo /opt/fluent-bit/bin/fluent-bit --dry-run -c /etc/fluent-bit/fluent-bit.co
 {{< /highlight >}}
 _** ```--dry-run``` only checks the configuration syntax. If there is no error, the configuration is valid._
 
-_** Do not start ```fluent-bit``` yet. It tails ```/kaia/kcnd/logs/kcnd.out```, which is created after kcnd starts. It will be started in [4-B. Start the monitoring services](/50_start_services/20_start_monitoring_services/)._
+_** Do not start ```fluent-bit``` yet. It tails ```/kaia/kcnd/logs/kcnd.out```, which is created after kcnd starts. It will be started in [5-B. Start the monitoring services](/50_start_services/20_start_monitoring_services/)._
 
 {{< line_break >}}
 If you finish this step, please click the next button ```>``` on the right side of this page.
