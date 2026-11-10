@@ -2,12 +2,12 @@
 title: "Log Shipper Configuration"
 date: 2026-11-10T10:00:00+09:00
 weight: 40
-pre: "<b>D. </b>"
+pre: "<b>E. </b>"
 draft: false
 ---
 
 {{< line_break >}}
-##### 4. Configure the log shipper (Fluent Bit)
+##### 5. Configure the log shipper (Fluent Bit)
 The kcnd log is shipped by Fluent Bit, a separate process from Telegraf. Whatever happens to log shipping, Telegraf metrics and the kcn process are not affected.
 
 ###### 1) Install Fluent Bit

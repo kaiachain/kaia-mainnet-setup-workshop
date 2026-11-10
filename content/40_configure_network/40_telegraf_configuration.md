@@ -2,12 +2,12 @@
 title: "Telegraf Configuration"
 date: 2022-07-14T16:44:50+09:00
 weight: 30
-pre: "<b>C. </b>"
+pre: "<b>D. </b>"
 draft: false
 ---
 
 {{< line_break >}}
-##### 3. Configure Telegraf for metrics
+##### 4. Configure Telegraf for metrics
 
 ###### 1) Enable metrics in kcnd
 Check if the two options below are enabled in ```kcnd.conf```.

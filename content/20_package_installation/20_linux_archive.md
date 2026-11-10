@@ -65,7 +65,7 @@ PIDFile=/kaia/kcnd/data/kcnd.pid
 WantedBy=multi-user.target
 ```
 
-_** Replace ```<DOWNLOADED_PATH>``` with your actual path. ```PIDFile``` must match ```DATA_DIR``` in ```kcnd.conf``` (see [4-A. Node Configuration](/40_configure_network/10_node_configuration/))._
+_** Replace ```<DOWNLOADED_PATH>``` with your actual path. ```PIDFile``` must match ```DATA_DIR``` in ```kcnd.conf``` (see [4-B. Node Configuration](/40_configure_network/10_node_configuration/))._
 
 Enable the service.
 {{< highlight bash >}}

@@ -2,13 +2,13 @@
 title: "Telegraf Installation"
 date: 2022-07-11T15:42:53+09:00
 weight: 20
-pre: "<b>B. </b>"
+pre: "<b>C. </b>"
 draft: false
 ---
 
 {{< line_break >}}
 
-##### 2. Telegraf Installation
+##### 3. Telegraf Installation
 >Telegraf Installation Guide:
 
 * https://docs.influxdata.com/telegraf/v1/install/

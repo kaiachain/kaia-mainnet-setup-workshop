@@ -2,12 +2,12 @@
 title: "Node Configuration"
 date: 2022-07-11T17:55:05+09:00
 weight: 10
-pre: "<b>A. </b>"
+pre: "<b>B. </b>"
 draft: false
 ---
 
 {{< line_break >}}
-##### 1. Modify data/log directory, network, discovery, boot node and reward base information.
+##### 2. Modify data/log directory, network, discovery, boot node and reward base information.
 
 ###### 1) Your ```kcnd.conf``` should be modified as shown below.
 _** ```kcnd.conf``` is located at ```/etc/kcnd/conf/kcnd.conf``` for Option 1 (Yum Repo), and ```<DOWNLOADED_PATH>/kcn-linux-amd64/conf/kcnd.conf``` for Option 2 (Archive). Please change the path of the ```egrep``` command below for Option 2._
